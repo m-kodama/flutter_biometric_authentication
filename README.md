@@ -1,16 +1,28 @@
 # flutter_biometric_authentication
 
-A new Flutter project.
+Flutterアプリに生体認証を組み込むサンプルサプリ
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+- パッケージのインストール
+  - `flutter pub get`
+- 起動
+  - `flutter run`
 
-A few resources to get you started if this is your first Flutter project:
+## Summary
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- [local_auth](https://pub.dev/packages/local_auth) パッケージを追加
+- ネイティブ側の設定
+  - Android
+    - MainActivity.kt
+      - `FlutterActivity` を `FlutterFragmentActivity` に変更
+    - AndroidManifest.xml
+      - 指紋認証のpermissionを追加
+  - iOS
+    - info.plist
+      - Face IDを使う理由を追記
+- Flutter側の実装
+  - 利用可能な生体認証の一覧取得
+    - `local_auth`パッケージの`getAvailableBiometrics`メソッド
+  - 生体認証の実行
+    - `local_auth`パッケージの`authenticate`メソッド
